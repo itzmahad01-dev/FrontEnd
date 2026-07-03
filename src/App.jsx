@@ -2,8 +2,8 @@ import React from "react";
 import "./App.css"
 import Signup from "./components/signup.jsx";
 import { Route, Routes } from "react-router-dom";
-import Home from "./components/home";
-import Login from "./components/Login";
+import Home from "./components/home.jsx";
+import Login from "./components/login.jsx";
 import ProtectedRouting from "./components/protectedRouting.jsx";
 
 const App = () => {
