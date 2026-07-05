@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./components/home.jsx";
 import Login from "./components/login.jsx";
 import ProtectedRouting from "./components/protectedRouting.jsx";
+import Contact from "./components/contact.jsx";
 
 const App = () => {
 
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/" element={<ProtectedRouting>
           <Home /> </ProtectedRouting>} />
         <Route path="/login" element={<Login />} />
+
       </Routes>
     </>
   );

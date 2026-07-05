@@ -74,9 +74,7 @@ const Login = () => {
           Don't have an account? <Link to="/signup">Sign Up</Link>
         </p>
 
-        <p>
-          <Link to="/">Go To Home</Link>
-        </p>
+      
       </form>
     </div>
   );

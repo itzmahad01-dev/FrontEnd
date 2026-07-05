@@ -86,10 +86,6 @@ const Signup = () => {
         <p>
           Already have an account? <Link to="/login">Login</Link>
         </p>
-
-        <p>
-          <Link to="/">Go To Home</Link>
-        </p>
       </form>
     </div>
   );

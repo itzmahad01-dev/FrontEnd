@@ -37,9 +37,9 @@ const user = JSON.parse(localStorage.getItem("user"));
 const username = user?.username || "Friend";
   return (
     <div className="home">
-    <header>
+    <header id="header">
   <div className="logo">
-    <h1 className="LOGO">LOGO</h1>
+    <h1 className="LOGO">Mahad Coder</h1>
   </div>
 
   <div
@@ -97,23 +97,6 @@ const username = user?.username || "Friend";
     )}
   </div>
 
-  <div className="btn">
-    {token ? (
-      <button onClick={logoutHandler} className="log">
-        Logout
-      </button>
-    ) : (
-      <>
-        <button onClick={loginhandler} className="log">
-          Log In
-        </button>
-
-        <button onClick={signuphandler} className="sign">
-          Sign Up
-        </button>
-      </>
-    )}
-  </div>
 </header>
       <section className="hero-section">
         <div className="left">
