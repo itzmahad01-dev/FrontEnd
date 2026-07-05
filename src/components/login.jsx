@@ -23,19 +23,16 @@ const Login = () => {
 
     try {
       const res = await axios.post(
-        "https://auth-back-end-six.vercel.app/api/auth/login",
+        "https://auth-back-end-tt7b.vercel.app/api/auth/login",
         user
       );
 
-      console.log(res.data);
+      if (res.data.status) {
+        // Save JWT Token
+        localStorage.setItem("token", res.data.token);
 
-      if (res.data.status === true) {
-        localStorage.setItem("Status", "true");
-
-        // Agar backend user bhej raha hai
-        if (res.data.user) {
-          localStorage.setItem("user", JSON.stringify(res.data.user));
-        }
+        // Save User Data
+        localStorage.setItem("user", JSON.stringify(res.data.user));
 
         alert(res.data.message);
 
@@ -75,7 +72,10 @@ const Login = () => {
 
         <p>
           Don't have an account? <Link to="/signup">Sign Up</Link>
-          Go To <Link to="/">Home</Link>
+        </p>
+
+        <p>
+          <Link to="/">Go To Home</Link>
         </p>
       </form>
     </div>
