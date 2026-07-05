@@ -2,12 +2,14 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import heroImg from "../assets/img.png";
 import "../App.css";
+import { useState } from "react";
 import Contact from "./contact";
 import About from "./about";
 import Footer from "./footer";
 
 const Home = () => {
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   // Check Login
   const token = localStorage.getItem("token");
@@ -35,36 +37,84 @@ const user = JSON.parse(localStorage.getItem("user"));
 const username = user?.username || "Friend";
   return (
     <div className="home">
-      <header>
-        <div className="logo">
-          <h1 className="LOGO">LOGO</h1>
-        </div>
+    <header>
+  <div className="logo">
+    <h1 className="LOGO">LOGO</h1>
+  </div>
 
-        <div className="nav">
-          <a href="#">Home</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-        </div>
+  <div
+    className="hamburger"
+    onClick={() => setMenuOpen(!menuOpen)}
+  >
+    {menuOpen ? "✖" : "☰"}
+  </div>
 
-        <div className="btn">
-          {token ? (
-            <button onClick={logoutHandler} className="log">
-              Logout
-            </button>
-          ) : (
-            <>
-              <button onClick={loginhandler} className="log">
-                Log In
-              </button>
+  <div className={`nav ${menuOpen ? "active" : ""}`}>
+    <a href="#" onClick={() => setMenuOpen(false)}>
+      Home
+    </a>
 
-              <button onClick={signuphandler} className="sign">
-                Sign Up
-              </button>
-            </>
-          )}
-        </div>
-      </header>
+    <a href="#about" onClick={() => setMenuOpen(false)}>
+      About
+    </a>
 
+    <a href="#contact" onClick={() => setMenuOpen(false)}>
+      Contact
+    </a>
+
+    {token ? (
+      <button
+        onClick={() => {
+          logoutHandler();
+          setMenuOpen(false);
+        }}
+        className="log"
+      >
+        Logout
+      </button>
+    ) : (
+      <>
+        <button
+          onClick={() => {
+            loginhandler();
+            setMenuOpen(false);
+          }}
+          className="log"
+        >
+          Log In
+        </button>
+
+        <button
+          onClick={() => {
+            signuphandler();
+            setMenuOpen(false);
+          }}
+          className="sign"
+        >
+          Sign Up
+        </button>
+      </>
+    )}
+  </div>
+
+  <div className="btn">
+    {token ? (
+      <button onClick={logoutHandler} className="log">
+        Logout
+      </button>
+    ) : (
+      <>
+        <button onClick={loginhandler} className="log">
+          Log In
+        </button>
+
+        <button onClick={signuphandler} className="sign">
+          Sign Up
+        </button>
+      </>
+    )}
+  </div>
+</header>
       <section className="hero-section">
         <div className="left">
           <p className="welcome">Welcome to My Website</p>
